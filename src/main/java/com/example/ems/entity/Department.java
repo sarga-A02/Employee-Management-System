@@ -18,11 +18,12 @@ public class Department {
     private String name;
     private LocalDate creationDate;
 
-    // Department Head is an Employee
-    @OneToOne
+    @OneToOne(optional = true)
+    @JoinColumn(name = "department_head_id")
     private Employee departmentHead;
 
-    // One department can have many employees
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Employee> employees;
 }

@@ -22,11 +22,11 @@ public class Employee {
     private LocalDate joiningDate;
     private double yearlyBonusPercentage;
 
-    // Many employees belong to one department
-    @ManyToOne
+    @ManyToOne(optional = true)
     private Department department;
 
-    // Reporting manager (another employee)
-    @ManyToOne
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @ManyToOne(optional = true)
     private Employee reportingManager;
 }
